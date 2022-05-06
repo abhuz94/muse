@@ -12,6 +12,7 @@ export default {
       name: 'avatar',
       title: 'Avatar',
       type: 'image',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'slug',
@@ -47,6 +48,5 @@ export default {
   ],
   initialValue: {
     isActive: true,
-    avatar: new Image('https://avatars.dicebear.com/api/adventurer/corn.svg?mood[]=happy&mood[]=sad'),
   },
 }

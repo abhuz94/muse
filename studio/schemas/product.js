@@ -25,6 +25,11 @@ export default {
       },
     },
     {
+      name: 'path',
+      title: 'Path (relative)',
+      type: 'string',
+    },
+    {
       name: 'images',
       title: 'Images',
       type: 'array',
