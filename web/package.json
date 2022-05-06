@@ -1,0 +1,51 @@
+{
+  "name": "muse-web",
+  "version": "1.0.0",
+  "description": "e-commerce webapp",
+  "main": "./src/app/index.js",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "next-lint": "next lint",
+    "css-lint": "stylelint src/styles/**/*.css",
+    "css-lint-fix": "stylelint --fix src/styles/**/*.css",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhuz94/muse.git"
+  },
+  "keywords": [
+    "e-commerce",
+    "cms",
+    "react"
+  ],
+  "author": "abhuz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhuz94/muse/issues"
+  },
+  "homepage": "https://github.com/abhuz94/muse#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-validator": "^6.14.0",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.6",
+    "autoprefix": "^1.0.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "jest": "^28.0.3",
+    "postcss": "^8.4.13",
+    "stylelint": "^14.8.2",
+    "stylelint-config-standard": "^25.0.0",
+    "tailwindcss": "^3.0.24"
+  }
+}
