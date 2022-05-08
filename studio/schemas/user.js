@@ -29,18 +29,6 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'order' }] }],
     },
     {
-      name: 'wishlist',
-      title: 'Wishlist',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'product'}] }],
-    },
-    {
-      name: 'cart',
-      title: 'Cart',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'product'}] }],
-    },
-    {
       name: 'isActive',
       title: 'Is Active',
       type: 'boolean',
