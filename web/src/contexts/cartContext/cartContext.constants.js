@@ -1,11 +1,13 @@
 // eslint-disable-next-line import/prefer-default-export
 export const INITIAL_CART_STATE = Object.freeze({
-  products: [],
-  error: null,
-  isFetching: false,
-  meta: {
-    totalPrice: 0,
-    totalDiscount: 0,
-    productCount: 0,
+  cart: {
+    products: {},
+    meta: {
+      totalPrice: 0,
+      totalDiscount: 0,
+      totalQty: 0,
+    },
   },
+  error: null,
+  syncing: false,
 });

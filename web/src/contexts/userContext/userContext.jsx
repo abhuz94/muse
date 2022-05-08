@@ -13,25 +13,25 @@ function UserProvider({ children }) {
   const [userData, setUserData] = useState(INITIAL_USER_STATE);
 
   useEffect(() => {
-    setUserData({ ...userData, isFetching: true });
+    setUserData({ ...userData, syncing: true });
 
     // bug?
 
     try {
       if (cookie.get('user')) {
-        setUserData({ ...userData, user: JSON.parse(cookie.get('user')), isFetching: false });
+        setUserData({ ...userData, user: JSON.parse(cookie.get('user')), syncing: false });
       } else {
         clientFetch(`${process.env.NEXT_PUBLIC_APP_BASE_URL}/api/user`)
           .then((res) => {
             const user = res.data;
 
             cookie.set('user', JSON.stringify(user), COOKIE_PROPS);
-            setUserData({ ...user, user, isFetching: false });
+            setUserData({ ...user, user, syncing: false });
           })
-          .catch((error) => setUserData({ ...userData, error, isFetching: false }));
+          .catch((error) => setUserData({ ...userData, error, syncing: false }));
       }
     } catch (error) {
-      setUserData({ ...userData, error, isFetching: false });
+      setUserData({ ...userData, error, syncing: false });
     }
   }, []);
 

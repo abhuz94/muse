@@ -8,8 +8,6 @@ import { useUser } from '../../contexts/userContext';
 function Header() {
   const { user } = useUser();
 
-  console.log(user);
-
   return (
     <div className="header">
       <Logo />

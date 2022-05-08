@@ -8,37 +8,17 @@ import CounterButton from '../CounterButton';
 import productReader from '../../readers/product.reader';
 import sanityClient from '../../utils/sanityClient';
 
+import { incrementCartAction, decrementCartAction } from '../../contexts/cartContext/cartContext.asyncActions';
 import { useCart } from '../../contexts/cartContext';
-import {
-  createIncrementProductQtyAction, createDecrementProductQtyAction,
-} from '../../contexts/cartContext/cartContext.actionCreators';
-import { updateCartAction } from '../../contexts/cartContext/cartContext.asyncActions';
+import { useUser } from '../../contexts/userContext';
 
 function ProductCard({ product }) {
+  const { user } = useUser();
   const { state, dispatch } = useCart();
-  const updateCart = updateCartAction(dispatch);
   const src = sanityClient.urlFor(productReader.image(product));
-  const cartProductCount = _get(
-    state.products.find(
-      ({ product: cartProduct }) => productReader.id(cartProduct) === productReader.id(product),
-    ),
-    'meta.qty',
-    0,
-  );
-  const onIncrementHandler = () => {
-    updateCart(
-      createIncrementProductQtyAction({
-        id: productReader.id(product), product, cartProductCount: cartProductCount + 1,
-      }),
-    );
-  };
-  const onDecrementHandler = () => {
-    updateCart(
-      createDecrementProductQtyAction({
-        id: productReader.id(product), cartProductCount: cartProductCount - 1,
-      }),
-    );
-  };
+  const qty = _get(state, `cart.products.${productReader.id(product)}.qty`, 0);
+  const incrementCart = incrementCartAction(dispatch);
+  const decrementCart = decrementCartAction(dispatch);
 
   return (
     <div className="product-card">
@@ -49,11 +29,11 @@ function ProductCard({ product }) {
         <button type="button">Buy Now</button>
       </Link>
       <CounterButton
-        min={1}
+        min={0}
         max={10}
-        value={cartProductCount}
-        onIncrement={onIncrementHandler}
-        onDecrement={onDecrementHandler}
+        value={qty}
+        onIncrement={() => incrementCart({ id: user.id, product: { ...product, qty: qty + 1 } })}
+        onDecrement={() => decrementCart({ id: user.id, product: { ...product, qty: qty - 1 } })}
       />
     </div>
   );

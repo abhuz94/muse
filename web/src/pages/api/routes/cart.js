@@ -1,11 +1,14 @@
 import { Router } from 'express';
 
+import { getCart, upsertProduct, removeProduct } from '../controllers/cartController';
 import asyncHandler from '../middlewares/asyncHandler';
 
 const router = Router();
 
-router.get('/', asyncHandler(async (_, res) => {
-  res.status(200).end();
-}));
+router.get('/:userID', asyncHandler(getCart));
+
+router.put('/:userID', asyncHandler(upsertProduct));
+
+router.delete('/:userID', asyncHandler(removeProduct));
 
 export default router;
