@@ -1,4 +1,4 @@
-import { middleware as apiCache } from 'apicache';
+// import { middleware as apiCache } from 'apicache';
 import { query } from 'express-validator';
 import { Router } from 'express';
 
@@ -8,7 +8,7 @@ import sanityClient from '../utils/sanityClient';
 
 const router = Router();
 
-router.get('/', apiCache(), query('q').isString(), reqValidator, asyncHandler(async (req, res) => {
+router.get('/', query('q').isString(), reqValidator, asyncHandler(async (req, res) => {
   const { q } = req.query;
   const data = await sanityClient.fetch(q);
 

@@ -7,13 +7,14 @@ import ProductCard from '../ProductCard';
 function NewArrival({ products }) {
   return (
     <div className="new-arrival">
-      {_map(products, (product) => <ProductCard product={product} key={product.slug} />)}
+      {_map(products, (product) => <ProductCard product={product} key={product.id} />)}
     </div>
   );
 }
 
 NewArrival.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
     description: PropTypes.string,
     discount: PropTypes.number,
     name: PropTypes.string,

@@ -1,6 +1,7 @@
 import _property from 'lodash/property';
 
 export default {
+  id: _property('id'),
   description: _property('description'),
   discount: _property('discount'),
   name: _property('name'),

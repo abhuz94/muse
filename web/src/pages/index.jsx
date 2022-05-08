@@ -26,6 +26,7 @@ Home.propTypes = {
     path: PropTypes.string,
   })).isRequired,
   newArrivalProducts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
     description: PropTypes.string,
     discount: PropTypes.number,
     name: PropTypes.string,
@@ -54,6 +55,7 @@ export async function getServerSideProps() {
       `*[_type == "newArrival"][0] {
         "products": [
           ...products[].product-> {
+            "id": _id,
             description,
             discount,
             name,

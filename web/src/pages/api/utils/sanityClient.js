@@ -29,7 +29,7 @@ class SanityClient {
   }
 
   urlFor(source) {
-    return this.#imageURLBuilder.image(source);
+    return this.#imageURLBuilder.image(source).url();
   }
 
   init() {

@@ -1,13 +1,17 @@
 import express from 'express';
 import _get from 'lodash/get';
 
-import createUserRoute from './routes/createUser';
+import cartRoute from './routes/cart';
+import userRoute from './routes/user';
 import queryRoute from './routes/query';
+import wishlistRoute from './routes/wishlist';
 
 const app = express();
 
+app.use('/api/cart', cartRoute);
 app.use('/api/query', queryRoute);
-app.use('/api/createUser', createUserRoute);
+app.use('/api/user', userRoute);
+app.use('/api/wishlist', wishlistRoute);
 
 app.use((_, __, next) => next({ status: 404, message: 'not found' }));
 // eslint-disable-next-line no-unused-vars
