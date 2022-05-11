@@ -2,7 +2,7 @@ import {
   FETCH_CART_IN_PROGRESS, FETCH_CART_SUCCESS, FETCH_CART_ERROR,
   UPDATE_CART_IN_PROGRESS, UPDATE_CART_ERROR,
   INCREMENT_PRODUCT_QTY, DECREMENT_PRODUCT_QTY,
-  INIT_CART, EMPTY_CART,
+  INIT_CART, CLEAR_CART,
 } from './cartContext.actionTypes';
 
 export const createFetchCartInProgressAction = () => ({
@@ -37,8 +37,8 @@ export const createDecrementProductQtyAction = (payload) => ({
   payload,
 });
 
-export const createEmptyCartAction = () => ({
-  type: EMPTY_CART,
+export const createClearCartAction = () => ({
+  type: CLEAR_CART,
 });
 
 export const createInitCartAction = (payload) => ({

@@ -4,10 +4,10 @@
 
 @layer components {
   .navbar-icon {
-    @apply relative flex justify-center items-center my-4 h-16 w-16 rounded-3xl bg-gray-800 cursor-pointer
-    shadow-lg text-pink-600
+    @apply relative flex justify-center items-center my-4 h-16 w-16 rounded-3xl bg-black cursor-pointer
+    shadow-lg text-stone-200
   
-    hover:bg-pink-600 hover:text-white hover:rounded-xl
+    hover:rounded-xl
   
     transition-all duration-300 ease-linear
   }
@@ -18,7 +18,7 @@
 
   .navbar-icon-badge {
     @apply absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold truncate
-    z-50 flex justify-center items-center border-4 border-gray-900
+    z-50 flex justify-center items-center border-4 border-stone-50
   }
 }
 

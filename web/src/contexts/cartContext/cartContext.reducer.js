@@ -7,7 +7,7 @@ import { INITIAL_CART_STATE } from './cartContext.constants';
 import {
   INCREMENT_PRODUCT_QTY, DECREMENT_PRODUCT_QTY,
   UPDATE_CART_IN_PROGRESS, UPDATE_CART_ERROR,
-  INIT_CART, EMPTY_CART,
+  INIT_CART, CLEAR_CART,
 } from './cartContext.actionTypes';
 
 export default function cartReducer(state, action = {}) {
@@ -64,7 +64,7 @@ export default function cartReducer(state, action = {}) {
 
       return newState;
     }
-    case EMPTY_CART:
+    case CLEAR_CART:
       return INITIAL_CART_STATE;
     default:
       return state;

@@ -1,8 +1,7 @@
-import _lodashGet from 'lodash/get';
+import _get from 'lodash/get';
 
-// eslint-disable-next-line no-underscore-dangle
-export default function _get(object, path, defaultValue) {
-  const value = _lodashGet(object, path, defaultValue);
+export default function get(object, path, defaultValue) {
+  const value = _get(object, path, defaultValue);
 
   return value === null ? defaultValue : value;
 }

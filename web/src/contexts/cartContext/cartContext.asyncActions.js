@@ -2,9 +2,9 @@ import {
   createFetchCartInProgressAction, createFetchCartErrorAction,
   createIncrementProductQtyAction, createDecrementProductQtyAction,
   createUpdateCartInProgressAction, createUpdateCartErrorAction,
-  createInitCartAction, createEmptyCartAction,
+  createInitCartAction, createClearCartAction,
 } from './cartContext.actionCreators';
-import { fetchCart, updateCart, deleteCart } from '../../utils/cart';
+import { fetchCart, upsertProduct, removeProduct } from '../../utils/cart';
 import _get from '../../utils/_get';
 
 export const fetchCartAction = (dispatch) => async (userID) => {
@@ -22,7 +22,7 @@ export const incrementCartAction = (dispatch) => async (payload) => {
   dispatch(createUpdateCartInProgressAction());
 
   try {
-    await updateCart(payload);
+    await upsertProduct(payload);
     dispatch(createIncrementProductQtyAction(payload));
   } catch (error) {
     dispatch(createUpdateCartErrorAction());
@@ -34,9 +34,9 @@ export const decrementCartAction = (dispatch) => async (payload) => {
 
   try {
     if (_get(payload, 'product.qty') === 0) {
-      await deleteCart(payload);
+      await removeProduct(payload);
     } else {
-      await updateCart(payload);
+      await upsertProduct(payload);
     }
     dispatch(createDecrementProductQtyAction(payload));
   } catch (error) {
@@ -44,12 +44,12 @@ export const decrementCartAction = (dispatch) => async (payload) => {
   }
 };
 
-export const deleteCartAction = (dispatch) => async (payload) => {
+export const clearCartAction = (dispatch) => async (payload) => {
   dispatch(createUpdateCartInProgressAction());
 
   try {
-    await deleteCart(payload);
-    dispatch(createEmptyCartAction());
+    await removeProduct(payload);
+    dispatch(createClearCartAction());
   } catch (error) {
     dispatch(createUpdateCartErrorAction());
   }
