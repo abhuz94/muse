@@ -18,6 +18,13 @@ class SanityClient {
     return this.#sanityClient.fetch(q, options);
   }
 
+  patch(id, data) {
+    return this.#sanityClient
+      .patch(id)
+      .set(data)
+      .commit();
+  }
+
   create(doc) {
     return this.#sanityClient.create(doc);
   }

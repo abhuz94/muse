@@ -18,7 +18,11 @@ class SanityClient {
   }
 
   urlFor(source) {
-    return this.#imageURLBuilder.image(source).url();
+    return this.#imageURLBuilder
+      .image(source)
+      .width(2560)
+      .fit('min')
+      .url();
   }
 
   init() {

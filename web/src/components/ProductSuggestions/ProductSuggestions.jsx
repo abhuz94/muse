@@ -4,18 +4,18 @@ import _map from 'lodash/map';
 
 import ProductCard from '../ProductCard';
 
-function NewArrival({ products }) {
+function ProductSuggestion({ products }) {
   return (
     <div className="new-arrival text-white">
-      <h2 className="text-4xl text-center">New Arrivals</h2>
-      <div className="products mt-8 flex flex-col align-center justify-center gap-5 md:flex-row">
+      <h2 className="text-6xl">New Arrivals</h2>
+      <div className="products mt-8 flex gap-5">
         {_map(products, (product) => <ProductCard product={product} key={product.id} />)}
       </div>
     </div>
   );
 }
 
-NewArrival.propTypes = {
+ProductSuggestion.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     description: PropTypes.string,
@@ -28,4 +28,4 @@ NewArrival.propTypes = {
   })).isRequired,
 };
 
-export default NewArrival;
+export default ProductSuggestion;

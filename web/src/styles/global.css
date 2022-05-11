@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navbar-icon {
+    @apply relative flex justify-center items-center my-4 h-16 w-16 rounded-3xl bg-gray-800 cursor-pointer
+    shadow-lg text-pink-600
+  
+    hover:bg-pink-600 hover:text-white hover:rounded-xl
+  
+    transition-all duration-300 ease-linear
+  }
+
+  .navbar-hr {
+    @apply bg-gray-700 border border-gray-700 rounded-full mx-2
+  }
+
+  .navbar-icon-badge {
+    @apply absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-red-600 text-white text-xs font-bold truncate
+    z-50 flex justify-center items-center border-4 border-gray-900
+  }
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --default-font-family: "Quicksand", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+html, body {
+  font-family: var(--default-font-family);
+  font-size: 1.2rem;
+}

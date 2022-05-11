@@ -4,6 +4,7 @@ import _get from 'lodash/get';
 import cartRoute from './routes/cart';
 import userRoute from './routes/user';
 import queryRoute from './routes/query';
+import reviewRoute from './routes/review';
 import wishlistRoute from './routes/wishlist';
 
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 app.use('/api/cart', cartRoute);
 app.use('/api/query', queryRoute);
 app.use('/api/user', userRoute);
+app.use('/api/review', reviewRoute);
 app.use('/api/wishlist', wishlistRoute);
 
 app.use((_, __, next) => next({ status: 404, message: 'not found' }));

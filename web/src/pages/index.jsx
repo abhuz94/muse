@@ -4,15 +4,15 @@ import _get from '../utils/_get';
 
 import { SanityClient } from '../utils/sanityClient';
 import Banner from '../components/Banner';
-import Header from '../components/Header';
 import NewArrival from '../components/NewArrival';
 
 function Home({ bannerProducts, newArrivalProducts }) {
   return (
     <div className="home">
-      <Header />
       <Banner products={bannerProducts} />
-      <NewArrival products={newArrivalProducts} />
+      <div className="mt-8">
+        <NewArrival products={newArrivalProducts} />
+      </div>
     </div>
   );
 }

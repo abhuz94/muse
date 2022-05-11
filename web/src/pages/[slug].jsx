@@ -1,31 +1,19 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 import React from 'react';
-import _map from 'lodash/map';
 import _get from '../utils/_get';
 
-import sanityClient, { SanityClient } from '../utils/sanityClient';
-import productReader from '../readers/product.reader';
-
-const Images = ({ images, alt }) => _map(images, (image) => {
-  const src = sanityClient.urlFor(image);
-
-  return <Image key={src} src={src} width="300" height="300" alt={alt} />;
-});
+import { SanityClient } from '../utils/sanityClient';
+import ProductDetailsComponent from '../components/ProductDetails';
+import ProductReviews from '../components/ProductReviews';
 
 function ProductDetails({ product }) {
   return (
-    <div className="product-details">
-      <div className="product-card">
-        <h2>{productReader.name(product)}</h2>
-        <Images images={productReader.images(product)} alt={productReader.name(product)} />
-        <p>{productReader.description(product)}</p>
-        <Link href={`${process.env.NEXT_PUBLIC_APP_BASE_URL}${productReader.path(product)}`}>
-          <button type="button">Buy Now</button>
-        </Link>
+    <>
+      <ProductDetailsComponent product={product} />
+      <div className="mt-8">
+        <ProductReviews productID={product.id} />
       </div>
-    </div>
+    </>
   );
 }
 

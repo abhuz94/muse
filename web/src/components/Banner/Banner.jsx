@@ -2,12 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _map from 'lodash/map';
 
+import { TILE_CLASSES } from './Banner.constants';
 import Tile from './Tile';
 
 function Banner({ products }) {
+  if (!products.length) {
+    return 'oops';
+  }
+
   return (
-    <div className="banner">
-      {_map(products, (product) => <Tile product={product} key={product.id} />)}
+    <div className="banner relative grid gap-2 md:grid-rows-6 md:grid-cols-5 sm:grid-cols-none">
+      {
+        _map(
+          products,
+          (product, i) => <Tile product={product} key={product.id} className={TILE_CLASSES[i]} />,
+        )
+      }
     </div>
   );
 }

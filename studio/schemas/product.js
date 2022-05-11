@@ -48,10 +48,18 @@ export default {
       title: 'Discount (%)',
       type: 'number',
       validation: Rule => Rule.required().positive(),
-    }
+    },
+    {
+      name: 'reviews',
+      title: 'Reviews',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'review'}] }],
+    },
   ],
   initialValue: {
     price: 0,
     discount: 0,
+    ratings: 0.0,
+    totalRatings: 0,
   },
 };

@@ -33,6 +33,12 @@ export default {
       title: 'Is Active',
       type: 'boolean',
     },
+    {
+      name: 'reviews',
+      title: 'Reviews',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'review' }] }],
+    },
   ],
   initialValue: {
     isActive: true,

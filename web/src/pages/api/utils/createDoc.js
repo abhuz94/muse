@@ -1,6 +1,5 @@
 import slugify from './slugify';
 
-// eslint-disable-next-line import/prefer-default-export
 export const createUserDoc = ({ name, uploadedImage }) => ({
   _type: 'user',
   name,
@@ -16,5 +15,23 @@ export const createUserDoc = ({ name, uploadedImage }) => ({
       // eslint-disable-next-line no-underscore-dangle
       _ref: uploadedImage._id,
     },
+  },
+});
+
+export const createReviewDoc = ({
+  title, description, productID, userID,
+}) => ({
+  _type: 'review',
+  title,
+  description,
+  likes: 0,
+  dislikes: 0,
+  user: {
+    _type: 'reference',
+    _ref: userID,
+  },
+  product: {
+    _type: 'reference',
+    _ref: productID,
   },
 });
