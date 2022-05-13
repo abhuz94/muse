@@ -6,10 +6,6 @@ import { TILE_CLASSES } from './Banner.constants';
 import Tile from './Tile';
 
 function Banner({ products }) {
-  if (!products.length) {
-    return 'oops';
-  }
-
   return (
     <div className="banner relative grid gap-2 md:grid-rows-6 md:grid-cols-5 sm:grid-cols-none">
       {

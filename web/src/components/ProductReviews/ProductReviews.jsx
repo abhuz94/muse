@@ -14,7 +14,7 @@ function ProductReviews({ productID }) {
   return (
     <div className="text-white">
       <h2 className="text-4xl">Product Reviews</h2>
-      <div className="mt-8 divide-y divide-double">
+      <div className="mt-8">
         {_map(reviews, (review) => (
           <ProductReviewCard
             review={review}

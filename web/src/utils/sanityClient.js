@@ -18,6 +18,8 @@ class SanityClient {
   }
 
   urlFor(source) {
+    if (!source) return '';
+
     return this.#imageURLBuilder
       .image(source)
       .width(2560)

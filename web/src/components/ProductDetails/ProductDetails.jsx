@@ -16,8 +16,8 @@ const Images = ({ images, alt }) => _map(images, (image) => {
 function ProductDetails({ product }) {
   return (
     <div className="product-details">
-      <div className="product-card text-white flex gap-5">
-        <div className=" bg-gray-400 shadow-2xl p-8 relative">
+      <div className="product-card flex gap-5">
+        <div className=" bg-stone-900 shadow-2xl p-8 relative">
           <Images images={productReader.images(product)} alt={productReader.name(product)} />
         </div>
         <div>

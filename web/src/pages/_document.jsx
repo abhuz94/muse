@@ -11,7 +11,7 @@ function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
       </Head>
-      <body className="text-white bg-stone-50 py-4">
+      <body className="text-stone-900 bg-stone-50 py-4">
         <Main />
         <NextScript />
       </body>
