@@ -3,6 +3,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 import banner from './banner'
 import brand from './brand'
+import category from './category'
 import newArrival from './newArrival'
 import order from './order'
 import product from './product'

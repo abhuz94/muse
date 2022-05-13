@@ -10,6 +10,12 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'brand',
+      title: 'Brand',
+      type: 'reference',
+      to: [{ type: 'brand' }],
+    },
+    {
       name: 'description',
       title: 'Description',
       type: 'string',
@@ -55,11 +61,16 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'review'}] }],
     },
+    {
+      name: 'avgRating',
+      title: 'Avg Rating',
+      type: 'number',
+    },
   ],
   initialValue: {
     price: 0,
     discount: 0,
     ratings: 0.0,
-    totalRatings: 0,
+    avgRating: 0.0,
   },
 };

@@ -20,11 +20,5 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'product' }] }],
     },
-    {
-      name: 'filters',
-      title: 'Filters',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'filter'}] }],
-    },
   ],
 };
