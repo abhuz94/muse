@@ -1,63 +1,40 @@
-import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import _map from 'lodash/map';
-import _noop from 'lodash/noop';
 
-import * as filterToGROQ from '../../../utils/filterToGROQ';
-import { BrandFilter, PriceFilter, RatingFilter } from '../../../components/Filters';
 import { SanityClient } from '../../../utils/sanityClient';
-import ProductCard from '../../../components/ProductCard';
+import ProductCard from '../../../molecules/ProductCard';
+import ProductFilter from '../../../organisms/ProductFilter';
 import _get from '../../../utils/_get';
 
 function Category({ products }) {
-  const router = useRouter();
-  const [filteredProducts, setFilteredProducts] = useState(products);
-  const [filters, setFilters] = useState({});
-  const updateFilters = ({ key, value, name } = {}) => {
-    setFilters({ ...filters, [name]: { key, value } });
-  };
-  const updateFilteredProducts = async (query) => {
-    const { categorySlug } = _get(router, 'query', {});
-    const res = await SanityClient.fetch(`*[_type=="category" && slug.current=="${categorySlug}" && (products[]->)[${query}][0] != null]{
-      "products": products[]->{
-        "id": _id,
-        description,
-        discount,
-        name,
-        price,
-        path,
-        "image": images[0],
-        "slug": slug.current,
-      }
-    }.products`);
-
-    // setFilteredProducts(_get(res, 'data', []));
-  };
+  const [test, setTest] = useState([]);
 
   useEffect(() => {
-    const queries = [];
+    const filterProducts = async (filters) => {
+      const query = `*[_type=="category" && slug.current=="speakers"][0] {
+        "product": (@.products[]->)[${Object.values(filters).filter((q) => q).join(' && ')}]
+      }.product`;
 
-    Object.keys(filters).forEach((filterName) => {
-      const filter = filters[filterName];
-      const query = _get(filterToGROQ, filterName, _noop)(filter);
+      console.log(query);
 
-      if (query.length > 0) {
-        queries.push(query);
+      try {
+        const res = await SanityClient.fetch(query);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
       }
-    });
+    };
 
-    updateFilteredProducts(queries.join(' && '));
-  }, [filters]);
+    filterProducts(test);
+  }, [test]);
 
   return (
     <div>
-      <BrandFilter brands={[{ displayName: 'JBL', value: 'jbl' }]} onUpdate={updateFilters} />
-      <PriceFilter min={0} max={5000} start={0} end={5000} onUpdate={updateFilters} />
-      <RatingFilter onUpdate={updateFilters} />
-      {_map(filteredProducts, (product) => (
-        <ProductCard product={product} key={product.id} />
-      ))}
+      <ProductFilter onUpdate={setTest} />
+      <div className="mt-8 flex flex-col items-center md:flex-row md:flex-wrap md:gap-5">
+        {_map(products, (product) => <ProductCard product={product} />)}
+      </div>
     </div>
   );
 }

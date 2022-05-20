@@ -9,11 +9,13 @@ function Document() {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;700&display=swap" rel="stylesheet" />
       </Head>
-      <body className="text-stone-900 bg-stone-50 py-4">
-        <Main />
-        <NextScript />
+      <body className="text-gray-800 bg-stone-50 p-2 h-screen">
+        <div className="overflow-auto h-[calc(100%-4rem)] md:h-full">
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   );

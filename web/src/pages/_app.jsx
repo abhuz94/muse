@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import CartProvider from '../contexts/cartContext';
-import Layout from '../components/Layout';
+import Layout from '../templates/Layout';
 import UserProvider from '../contexts/userContext';
 
 import '../styles/global.css';

@@ -3,37 +3,23 @@ import React from 'react';
 import _get from '../utils/_get';
 
 import { SanityClient } from '../utils/sanityClient';
-import Banner from '../components/Banner';
-import NewArrival from '../components/NewArrival';
+import Home from '../templates/Home';
 
-function Home({ bannerProducts, newArrivalProducts }) {
+function HomePage({ bannerProducts }) {
   return (
-    <div className="home">
-      <Banner products={bannerProducts} />
-      <div className="mt-8">
-        <NewArrival products={newArrivalProducts} />
-      </div>
+    <div className="home-page">
+      <Home products={bannerProducts} />
     </div>
   );
 }
 
-Home.propTypes = {
+HomePage.propTypes = {
   bannerProducts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
     image: PropTypes.shape({}),
     ctaText: PropTypes.string,
     path: PropTypes.string,
-  })).isRequired,
-  newArrivalProducts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    description: PropTypes.string,
-    discount: PropTypes.number,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    path: PropTypes.string,
-    image: PropTypes.shape({}),
-    slug: PropTypes.string,
   })).isRequired,
 };
 
@@ -51,37 +37,10 @@ export async function getServerSideProps() {
       }`,
     );
 
-    const newArrivalProducts = await SanityClient.fetch(
-      `*[_type == "newArrival"][0] {
-        "products": [
-          ...products[].product-> {
-            "id": _id,
-            description,
-            discount,
-            name,
-            price,
-            path,
-            "image": images[0],
-            "slug": slug.current,
-          }
-        ]
-      }`,
-    );
-
-    return {
-      props: {
-        bannerProducts: _get(bannerProducts, 'data.tiles', []),
-        newArrivalProducts: _get(newArrivalProducts, 'data.products', []),
-      },
-    };
+    return { props: { bannerProducts: _get(bannerProducts, 'data.tiles', []) } };
   } catch (err) {
-    return {
-      props: {
-        bannerProducts: [],
-        newArrivalProducts: [],
-      },
-    };
+    return { props: { bannerProducts: [] } };
   }
 }
 
-export default Home;
+export default HomePage;

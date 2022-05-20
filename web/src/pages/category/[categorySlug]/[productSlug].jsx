@@ -3,21 +3,13 @@ import React from 'react';
 import _get from '../../../utils/_get';
 
 import { SanityClient } from '../../../utils/sanityClient';
-import ProductDetailsComponent from '../../../components/ProductDetails';
-import ProductReviews from '../../../components/ProductReviews';
+import ProductDetail from '../../../templates/ProductDetail';
 
-function ProductDetails({ product }) {
-  return (
-    <>
-      <ProductDetailsComponent product={product} />
-      <div className="mt-8">
-        <ProductReviews productID={product.id} />
-      </div>
-    </>
-  );
+function ProductDetailPage({ product }) {
+  return <ProductDetail product={product} />;
 }
 
-ProductDetails.propTypes = {
+ProductDetailPage.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
@@ -85,4 +77,4 @@ export const getStaticProps = async (context) => {
   }
 };
 
-export default ProductDetails;
+export default ProductDetailPage;

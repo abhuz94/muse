@@ -62,8 +62,8 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'review'}] }],
     },
     {
-      name: 'avgRating',
-      title: 'Avg Rating',
+      name: 'rating',
+      title: 'Rating',
       type: 'number',
     },
   ],
@@ -71,6 +71,6 @@ export default {
     price: 0,
     discount: 0,
     ratings: 0.0,
-    avgRating: 0.0,
+    rating: 0.0,
   },
 };

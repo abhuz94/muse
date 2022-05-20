@@ -18,13 +18,14 @@ class SanityClient {
   }
 
   urlFor(source) {
-    if (!source) return '';
-
-    return this.#imageURLBuilder
-      .image(source)
-      .width(2560)
-      .fit('min')
-      .url();
+    try {
+      return this.#imageURLBuilder
+        .image(source)
+        .fit('min')
+        .url();
+    } catch (e) {
+      return '';
+    }
   }
 
   init() {
